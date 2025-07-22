@@ -9,7 +9,7 @@ function App() {
   // and to switch between players after each turn.
   const [activePlayer, setActivePlayer] = useState("X");
 
-  function handleSelectSquare(row) {
+  function handleSelectSquare(rowIndex, colIndex) {
     setActivePlayer((curActivePlayer) => (curActivePlayer === "X" ? "O" : "X"));
     setGameTurns((prevTurns) => {
       let currentPlayer = "X";
@@ -40,10 +40,7 @@ function App() {
             isActive={activePlayer === "O"}
           />
         </ol>
-        <GameBoard
-          onSelectSquare={handleSelectSquare}
-          activePlayerSymbol={activePlayer}
-        />
+        <GameBoard onSelectSquare={handleSelectSquare} turns={gameTurns} />
       </div>
       <Log />
     </main>
